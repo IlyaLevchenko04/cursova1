@@ -82,7 +82,7 @@ function handleDraw() {
   const isDraw = Array.from(allItems).every(item => item.textContent !== '');
 
   if (isDraw) {
-    alert('Гра закінчилася нічиєю 😐');
+    alert('Draw 😐');
     reset();
   }
 }
