@@ -56,10 +56,12 @@ function onClick(evt) {
     evt.target.textContent = player;
     player = player === 'X' ? 'O' : 'X';
   }
+  handleDraw();
 }
 
 function checkWinner(arr) {
   const result = win.some(values => values.every(value => arr.includes(value)));
+
   return result;
 }
 
@@ -73,4 +75,14 @@ function reset() {
 function loadScoreToLS() {
   localStorage.setItem('scoreX', `${scoreX}`);
   localStorage.setItem('scoreO', `${scoreO}`);
+}
+
+function handleDraw() {
+  const allItems = document.querySelectorAll('.item');
+  const isDraw = Array.from(allItems).every(item => item.textContent !== '');
+
+  if (isDraw) {
+    alert('Гра закінчилася нічиєю 😐');
+    reset();
+  }
 }
