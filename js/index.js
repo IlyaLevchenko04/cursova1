@@ -1,6 +1,7 @@
 const content = document.querySelector('.content');
 const spanScoreX = document.querySelector('.scoreX');
 const spanScoreO = document.querySelector('.scoreO');
+const playerSpan = document.querySelector('.player');
 let player = 'X';
 let stepX = [];
 let stepO = [];
@@ -56,6 +57,7 @@ function onClick(evt) {
     evt.target.textContent = player;
     player = player === 'X' ? 'O' : 'X';
   }
+  playerSpan.innerHTML = `${player} turn`;
   handleDraw();
 }
 
@@ -70,6 +72,7 @@ function reset() {
   player = 'X';
   stepX = [];
   stepO = [];
+  playerSpan.innerHTML = '';
 }
 
 function loadScoreToLS() {
