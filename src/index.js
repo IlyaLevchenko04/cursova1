@@ -1,3 +1,23 @@
+// IlyaLevchenko04/cursova1
+import Toastify from 'toastify-js';
+import 'toastify-js/src/toastify.css';
+
+function toast(text) {
+  return Toastify({
+    text: `${text}`,
+    duration: 3000,
+    destination: 'https://github.com/apvarun/toastify-js',
+    newWindow: true,
+    close: true,
+    gravity: 'top', // `top` or `bottom`
+    position: 'left', // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: 'linear-gradient(to right, #00b09b, #96c93d)',
+    },
+  }).showToast();
+}
+
 const content = document.querySelector('.content');
 const spanScoreX = document.querySelector('.scoreX');
 const spanScoreO = document.querySelector('.scoreO');
@@ -38,7 +58,7 @@ function onClick(evt) {
         scoreX += 1;
         spanScoreX.innerHTML = `X: ${scoreX}`;
         loadScoreToLS();
-        alert(`${player} is Winner 😎`);
+        toast(`${player} переміг`);
         reset();
         return;
       }
@@ -49,7 +69,7 @@ function onClick(evt) {
         scoreO += 1;
         spanScoreO.innerHTML = `O: ${scoreO}`;
         loadScoreToLS();
-        alert(`${player} is Winner 😎`);
+        toast(`${player} переміг`);
         reset();
         return;
       }
@@ -85,7 +105,7 @@ function handleDraw() {
   const isDraw = Array.from(allItems).every(item => item.textContent !== '');
 
   if (isDraw) {
-    alert('Draw 😐');
+    toast('Нічия 😐');
     reset();
   }
 }
